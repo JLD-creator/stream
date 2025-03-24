@@ -19,29 +19,34 @@ public class Example1 {
         List<Integer> newList = par(intList);
         System.out.println(newList);
     }
+    //1
     public static <T> Optional<T> fist(List<T> list){
         return list
                 .stream()
                 .findFirst();
     }
+    //2
     public static <T> Optional<T> second(List<T> list){
         return list
                 .stream()
                 .skip(1)
                 .findFirst();
     }
+    //3
     public static <T> Optional<T> last(List<T> list){
         return list
                 .stream()
                 .skip(list.size()-1)
                 .findFirst();
     }
+    //4
     public static List<Integer> sum10( List<Integer> list){
         return list
                 .stream()
                 .map(n -> n +10)
                 .collect(Collectors.toList());
     }
+    //7
     public static List<Integer> par (List<Integer> list){
         return list
                 .stream()
