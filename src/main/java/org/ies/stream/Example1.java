@@ -16,7 +16,7 @@ public class Example1 {
                 .forEach(System.out::println);
        Optional<String> primero = fist(stringList);
         System.out.println(primero);
-        List<Integer> newList = sum10(intList);
+        List<Integer> newList = par(intList);
         System.out.println(newList);
     }
     public static <T> Optional<T> fist(List<T> list){
@@ -41,6 +41,12 @@ public class Example1 {
                 .stream()
                 .map(n -> n +10)
                 .collect(Collectors.toList());
+    }
+    public static List<Integer> par (List<Integer> list){
+        return list
+                .stream()
+                .filter(n -> n % 2 == 0)
+                .toList();
     }
 }
 
