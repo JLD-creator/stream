@@ -1,16 +1,14 @@
 package org.ies.stream;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Scanner;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class Example1 {
     public static void main(String[] args) {
         List<String> stringList = List.of("Bob", "Peppa", "George");
         List<Integer> intList = List.of(23, 78, 89);
+        List<Double> dolist = List.of(55.4, 45.90, 12.98);
         stringList
                 .stream()
                 .forEach(System.out::println);
@@ -18,6 +16,8 @@ public class Example1 {
         System.out.println(primero);
         List<Integer> newList = par(intList);
         System.out.println(newList);
+        Optional<Double> suma = avg(dolist);
+        System.out.println(suma);
     }
     //1
     public static <T> Optional<T> fist(List<T> list){
@@ -52,6 +52,19 @@ public class Example1 {
                 .stream()
                 .filter(n -> n % 2 == 0)
                 .toList();
+    }
+    //8
+    public static Double sum(List<Double> doubleList){
+        return doubleList
+                .stream()
+                .reduce(0d,(a,b)-> a+b);
+    }
+    //9
+    public static Optional<Double> avg(List<Double> doubleList){
+       return doubleList
+               .stream()
+               .reduce((a, b) -> a + b)
+               .map(suma -> suma /doubleList.size());
     }
 }
 
