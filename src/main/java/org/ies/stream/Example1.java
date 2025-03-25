@@ -1,14 +1,14 @@
 package org.ies.stream;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Example1 {
     public static void main(String[] args) {
         List<String> stringList = List.of("Bob", "Peppa", "George");
         List<Integer> intList = List.of(23, 78, 89);
-        List<Double> dolist = List.of(55.4, 45.90, 12.98);
+        List<Double> dolist = List.of(33.99, 45.90, 12.98);
+        List<Double> dolist2 = List.of(45.25, 45.90, 89.33);
         stringList
                 .stream()
                 .forEach(System.out::println);
@@ -16,8 +16,7 @@ public class Example1 {
         System.out.println(primero);
         List<Integer> newList = par(intList);
         System.out.println(newList);
-        Optional<Double> suma = avg(dolist);
-        System.out.println(suma);
+        System.out.println(juction(dolist, dolist2));
     }
     //1
     public static <T> Optional<T> fist(List<T> list){
@@ -65,6 +64,29 @@ public class Example1 {
                .stream()
                .reduce((a, b) -> a + b)
                .map(suma -> suma /doubleList.size());
+    }
+    //10
+    public static Optional<Double> maximum(List<Double> doubleList){
+        Optional<Double> max = doubleList
+                .stream()
+                .max(Double::compareTo);
+        return max;
+    }
+    //11
+    public static Optional<Double> minimum(List<Double> doubleList){
+        Optional<Double> min = doubleList
+                .stream()
+                .min(Double::compareTo);
+        return min;
+    }
+    //12
+    public static List<Double> juction (List<Double> list1, List<Double> list2){
+        List<Double> union = new LinkedList<>();
+        Set<Double> list2Set = new HashSet<>();
+        return list1
+                .stream()
+                .filter(list2Set::contains)
+                .toList();
     }
 }
 
